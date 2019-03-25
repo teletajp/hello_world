@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.2)
 
 project(hello_world VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
-
+find_package(Threads REQUIRED)
 find_package(GTest MODULE REQUIRED)
 
 configure_file(version.h.in ${PROJECT_SOURCE_DIR}/version.h)
@@ -15,7 +15,7 @@ set_target_properties(${PROJECT_NAME} test_version PROPERTIES
     COMPILE_OPTIONS "-Wpedantic;-Wall;-Wextra"
 )
 
-target_link_libraries(test_version PRIVATE GTest::GTest GTest::Main)
+target_link_libraries(test_version PRIVATE GTest::GTest GTest::Main Threads::Threads)
 #target_include_directories(test_version PRIVATE ${GTEST_INCLUDE_DIR})
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 
