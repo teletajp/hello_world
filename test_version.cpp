@@ -1,14 +1,12 @@
-#define BOOST_TEST_MODULE helloworld_test_module
-
-#include "lib.h"
-
-#include <boost/test/unit_test.hpp>
-
-BOOST_AUTO_TEST_SUITE(helloworld_test_suite)
-
-BOOST_AUTO_TEST_CASE(helloworld_test_version)
+#include <gtest/gtest.h>
+#include "get_version.h"
+TEST(TestVersion, get_version)
 {
-    BOOST_CHECK(version() > 0);
+	ASSERT_EQ(PROJECT_VERSION_PATCH, get_version());
 }
 
-BOOST_AUTO_TEST_SUITE_END()
+int main(int argc, char *argv[])
+{
+	::testing::InitGoogleTest(&argc, argv);
+	return RUN_ALL_TESTS();
+}

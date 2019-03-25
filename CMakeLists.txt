@@ -1,42 +1,23 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(cmake VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+project(hello_world VERSION 0.0.1)
 
-find_package(Threads REQUIRED)
-find_package(spdlog REQUIRED) 
-find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+find_package(GTest MODULE REQUIRED)
 
 configure_file(version.h.in ${PROJECT_SOURCE_DIR}/version.h)
 
-add_executable(helloworld_cli main.cpp)
-
-add_library(helloworld lib.cpp)
-
+add_executable(${PROJECT_NAME} main.cpp)
 add_executable(test_version test_version.cpp)
 
-set_target_properties(helloworld_cli helloworld test_version PROPERTIES
-    CXX_STANDARD 17
+set_target_properties(${PROJECT_NAME} test_version PROPERTIES
+    CXX_STANDARD 11
     CXX_STANDARD_REQUIRED ON
     COMPILE_OPTIONS "-Wpedantic;-Wall;-Wextra"
 )
 
-set_target_properties(test_version PROPERTIES
-    COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
-    INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
-)
-
-target_link_libraries(helloworld_cli
-    helloworld
-    Threads::Threads
-    spdlog::spdlog
-)
-
-target_link_libraries(test_version
-    ${Boost_LIBRARIES}
-    helloworld
-)
-
-install(TARGETS helloworld_cli RUNTIME DESTINATION bin)
+target_link_libraries(test_version PRIVATE GTest::GTest GTest::Main)
+#target_include_directories(test_version PRIVATE ${GTEST_INCLUDE_DIR})
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 
 set(CPACK_GENERATOR DEB)
 
