@@ -3,13 +3,16 @@ language: cpp
 compiler: clang
 before_script:
 - sudo apt update
-- sudo apt install libgtest-dev -y
+#- sudo apt install libgtest-dev -y
+- sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
 - sudo apt install clang -y
 - sudo apt install cmake
 - cd /usr/src/gtest
 - ls -l
 - sudo cmake .
 - sudo make
+- ls -l /usr/lib
+- ls -l /usr/
 - sudo cp *.a /usr/lib
 - sudo ln -s /usr/lib/libgtest.a /usr/local/lib/gtest/libgtest.a
 - sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
