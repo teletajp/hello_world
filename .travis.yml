@@ -8,16 +8,17 @@ before_script:
 - sudo apt install cmake
 - cd /usr/src/gtest
 - ls -l /usr/src/gtest
-- sudo cmake /usr/src/gtest
-- sudo make /usr/src/gtest
+- sudo cmake .
+- sudo make
 - ls
 - ls src
 - ls /usr/local/lib
-- ls /usr/local/include
+- ls /usr/local
 - ls /usr/include
 - sudo cp *.a /usr/lib
-#- sudo ln -s /usr/lib/libgtest.a /usr/local/lib/gtest/libgtest.a
-#- sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
+- sudo mkdir /usr/local/lib/gtest
+- sudo ln -s /usr/lib/libgtest.a /usr/local/lib/gtest/libgtest.a
+- sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
 script:
 - pwd
 - cmake .
