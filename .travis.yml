@@ -5,8 +5,7 @@ before_script:
 - sudo apt update
 - sudo apt install libgtest-dev -y
 - sudo apt install clang -y
-- pwd
-- sudo apt install cmake
+#- sudo apt install cmake
 - cd /usr/src/gtest
 - sudo cmake .
 - sudo make

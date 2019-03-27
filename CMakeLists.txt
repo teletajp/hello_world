@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.2)
 
-project(hello_world VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+project(helloworld VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 find_package(Threads REQUIRED)
 find_package(GTest MODULE REQUIRED)
 
