@@ -7,6 +7,7 @@ before_script:
 - sudo apt install clang -y
 - sudo apt install cmake
 - cd /usr/src/gtest
+- ls -l
 - sudo cmake .
 - sudo make
 - sudo cp *.a /usr/lib
