@@ -10,8 +10,9 @@ before_script:
 - ls -l
 - sudo cmake .
 - sudo make
-- ls -l /usr/lib
-- ls -l /usr/
+- ls
+- ls /usr/local/lib
+- ls /usr/local/lib/gtest
 - sudo cp *.a /usr/lib
 - sudo ln -s /usr/lib/libgtest.a /usr/local/lib/gtest/libgtest.a
 - sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
