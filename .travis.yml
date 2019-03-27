@@ -8,20 +8,14 @@ before_script:
 - pwd
 - sudo apt install cmake
 - cd /usr/src/gtest
-- ls -l /usr/src/gtest
 - sudo cmake .
 - sudo make
-- ls
-- ls src
-- ls /usr/local/lib
-- ls /usr/local
-- ls /usr/include
 - sudo cp *.a /usr/lib
 - sudo mkdir /usr/local/lib/gtest
 - sudo ln -s /usr/lib/libgtest.a /usr/local/lib/gtest/libgtest.a
 - sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
 script:
-- cd ~
+- cd /home/travis/build/teletajp/hello_world
 - cmake .
 - cmake --build .
 - cmake --build . --target test
