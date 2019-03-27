@@ -5,6 +5,7 @@ before_script:
 - sudo apt update
 - sudo apt install libgtest-dev -y
 - sudo apt install clang -y
+- pwd
 - sudo apt install cmake
 - cd /usr/src/gtest
 - ls -l /usr/src/gtest
@@ -20,7 +21,7 @@ before_script:
 - sudo ln -s /usr/lib/libgtest.a /usr/local/lib/gtest/libgtest.a
 - sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/gtest/libgtest_main.a
 script:
-- pwd
+- cd ~
 - cmake .
 - cmake --build .
 - cmake --build . --target test
